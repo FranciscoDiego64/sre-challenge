@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jw-scaler-deployment
+  labels:
+    app: jw-scaler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jw-scaler
+  template:
+    metadata:
+      labels:
+        app: jw-scaler
+    spec:
+      containers:
+      - name: jw-scaler
+        image: franciscodiego64/jw-scaler:latest
+        ports:
+        - containerPort: 3000
+        env:                               
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-creds
+              key: accesskey
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-creds
+              key: secretkey

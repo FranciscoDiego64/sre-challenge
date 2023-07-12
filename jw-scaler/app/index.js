@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const minioClient = new Minio.Client({
-    endPoint: 'minio-1689079872.svc.cluster.local',
+    endPoint: 'minio-1689079872.minio-ns.svc.cluster.local',
     port: 9000,
     useSSL: false,
     accessKey: process.env.MINIO_ACCESS_KEY,

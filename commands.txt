@@ -1,0 +1,24 @@
+# DevOps Task Commands
+
+The following are the commands we've run so far in the task of deploying the `jw-scaler` service and associated infrastructure.
+
+## Setup Infrastructure Cluster
+
+1. Create the Kind cluster:
+
+kind create cluster --name infra-cluster --config ./terraform/infra-cluster.tf
+
+## Install MinIO on infrastructure Cluster
+
+1. Add MinIO Helm repo:
+
+helm repo add minio https://helm.min.io/
+
+2. Update Helm repo
+
+helm repo update
+
+3. Install MinIO using the Helm chart:
+
+helm install --namespace minio --create-namespace minio minio/minio
+

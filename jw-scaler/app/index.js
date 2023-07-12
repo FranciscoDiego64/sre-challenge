@@ -6,8 +6,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const minioClient = new Minio.Client({
-    endPoint: 'minio-1689079872.minio-ns.svc.cluster.local',
-    port: 9000,
+    //endPoint: 'minio.minio-ns.svc.cluster.local',
+    //endPoint: 'localhost',
+    endPoint: '172.18.0.3',
+    port: 30090,
     useSSL: false,
     accessKey: process.env.MINIO_ACCESS_KEY,
     secretKey: process.env.MINIO_SECRET_KEY
@@ -16,7 +18,7 @@ const minioClient = new Minio.Client({
 app.get('/:objectName', async (req, res) => {
     const objectName = req.params.objectName;
 
-    minioClient.getObject('posters', objectName, function(err, dataStream) {
+    minioClient.getObject('postersv2', objectName, function(err, dataStream) {
         if (err) {
             console.log('Error fetching object:', err)
             return res.status(500).send('Error fetching object: ' + err.message);

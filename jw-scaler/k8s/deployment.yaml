@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jw-scaler
-        image: franciscodiego64/jw-scaler:latest
+        image: franciscodiego64/jw-scaler:v2
         ports:
         - containerPort: 3000
         env:                               

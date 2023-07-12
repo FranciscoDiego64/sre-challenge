@@ -44,7 +44,9 @@ The `terraform` directory holds all our Terraform files. The `app-cluster.tf` an
 
 ## Using the App
 
-Once everything is set up, navigate to `http://localhost:3000/your-image-name.jpeg` in a web browser to fetch an image.
+Once everything is set up, run it with `kubectl port-forward service/jw-scaler-service 3000:3000`
+
+Then navigate to `http://localhost:3000/your-image-name.jpeg` in a web browser to fetch an image.
 
 Replace `your-image-name.jpeg` with the name of an image file you uploaded to the `postersv2` MinIO bucket. For example, if you uploaded a file named `example.jpeg`, you would navigate to `http://localhost:3000/example.jpeg`.
 
